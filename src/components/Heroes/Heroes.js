@@ -5,7 +5,7 @@ import Hero from './Hero/Hero'
 
 const heroes = props => {
   return (
-    <div className="container">
+    <div className="d-flex flex-wrap">
       {
         props.heroes.map(hero => (
           <Hero

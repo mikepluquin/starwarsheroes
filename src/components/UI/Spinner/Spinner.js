@@ -15,7 +15,7 @@ const spinner = props => {
   }
 
   return (
-    <i className={"swg swg-xwing" + classesName.join(" ")}></i>
+    <i className={"swg swg-xwing " + classesName.join(" ")}></i>
   )
 }
 

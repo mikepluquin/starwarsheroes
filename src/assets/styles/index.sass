@@ -12,14 +12,20 @@ body
   min-height: 100%
   
 #layout
+  overflow: auto
   background-image: url('../images/light-bg.png')
   background-size: cover
   background-position: right
   height: 100vh
   display: flex 
+  flex-direction: column
+  color: #000
   main
     flex: 1
+  header 
+    background: #ffffff75
   &.layout_error
     background-image: url('../images/error-bg.png')
   &.layout_dark
+    color: #fff
     background-image: url('../images/dark-bg.png')

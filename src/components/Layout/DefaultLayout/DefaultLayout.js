@@ -7,9 +7,9 @@ import Footer from '../../Footer/Footer'
 
 const layout = ({ darkMode, component: MatchComponent, ...remainingProps }) => {
   return (
-    <div id="layout" className={darkMode ? "dark-mode" : null}>
+    <div id="layout" className={darkMode ? "layout_dark" : null}>
       <Header />
-      <main>
+      <main className="mt-3">
         <Route
           {...remainingProps}
           render={matchProps => (

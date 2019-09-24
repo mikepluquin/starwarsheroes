@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import Heroes from '../../components/Heroes/Heroes'
 import Search from '../../components/Search/Search'
 import Button from '../../components/UI/Button/Button'
+import Icon from '../../components/UI/Icon/Icon'
 import Spinner from '../../components/UI/Spinner/Spinner'
 import * as api from '../../services/api'
 
@@ -15,10 +16,10 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    this.fetchPeoples()
+    this.fetchHeroes()
   }
 
-  fetchPeoples(params = {}, append = false) {
+  fetchHeroes(params = {}, append = false) {
     this.setState({
       loading: true
     })
@@ -36,11 +37,11 @@ class Home extends Component {
 
     api.fetchPeoples(params).then((response) => {
       // format the result
-      const newHeroes = response.data.map(hero => {
+      const newHeroes = response.data.results.map(hero => {
         // hero id is the last part of its url
         // e.g. : url is "https://swapi.co/api/people/1/" , id will be 1
         const parsedUrl = hero.url.split("/")
-        hero.id = parsedUrl[parsedUrl.length - 2]
+        hero.id = parseInt(parsedUrl[parsedUrl.length - 2])
         return hero
       })
 
@@ -59,7 +60,7 @@ class Home extends Component {
         page: newPage
       })
     }).catch((error) => {
-      alert(error)
+      console.log(error)
       this.setState({
         loading: false,
         page: newPage
@@ -68,44 +69,59 @@ class Home extends Component {
   }
 
   onLoadMore() {
-    this.fetchPeoples()
+    this.fetchHeroes({}, true)
   }
 
   onSearch(terms) {
     const params = {
       search: terms
     }
-    this.fetchPeoples(params, true)
+    this.fetchHeroes(params)
   }
 
   render() {
     let spinner = null
-    if (this.state.loading) {
-      spinner = <Spinner />
+    if (!this.state.loading) {
+      spinner = (
+        <div>
+          <Spinner size="xxl" />
+        </div>
+      )
     }
 
     // no search done yet
-    let content = (
-      <Fragment>
-        <p>No heroes !</p>
-        {spinner}
-      </Fragment>
-    )
+    let content = spinner
 
-    if (this.state.heroes && this.state.heroes.isArray()) {
+    if (this.state.heroes && Array.isArray(this.state.heroes)) {
       // no results found
       if (this.state.heroes.length <= 0) {
-        content = "This is not the hero you are looking for"
+        content = (
+          <p>
+            <Icon type="trooper" />
+            &nbsp;
+            This is not the hero you are looking for
+          </p>
+        )
+
       }
       // results found
       else {
         content = (
           <Fragment>
-            <Heroes heroes={this.state.heroes} />
-            {spinner}
-            <Button disabled={this.state.loading} clicked={this.onLoadMore}>
-              Load more
-          </Button>
+            <div className="row">
+              <div className="col-12">
+                <Heroes heroes={this.state.heroes} />
+              </div>
+            </div>
+
+            <div className="row">
+              <div className="col-6 offset-5">
+                {spinner}
+                <Button disabled={this.state.loading} clicked={() => this.onLoadMore()}>
+                  Load more
+                </Button>
+              </div>
+            </div>
           </Fragment>
         )
       }
@@ -113,8 +129,15 @@ class Home extends Component {
 
     return (
       <Fragment>
-        {/* <Search submitted={(terms) => this.onSearch(terms, true)} /> */}
-        {content}
+        <div className="container">
+          <div className="row">
+            <div className="col-6 offset-3">
+              <Search changed={(terms) => this.onSearch(terms, true)} />
+            </div>
+          </div>
+
+          {content}
+        </div>
       </Fragment>
     )
   }

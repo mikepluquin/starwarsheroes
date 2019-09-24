@@ -15,7 +15,7 @@ const toggleDarkMode = (state, action) => {
 const toggleWookieMode = (state, action) => {
   return {
     ...state, 
-    darkMode: !state.wookieMode
+    wookieMode: !state.wookieMode
   }
 }
 
