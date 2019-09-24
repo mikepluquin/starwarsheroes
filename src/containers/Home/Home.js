@@ -9,7 +9,7 @@ import * as api from '../../services/api'
 
 class Home extends Component {
   state = {
-    heroes: [],
+    heroes: null,
     loading: false,
     page: 1
   }
@@ -30,7 +30,7 @@ class Home extends Component {
     }
     params.page = newPage
 
-    if(this.props.wookieMode){
+    if (this.props.wookieMode) {
       params.format = "wookiee"
     }
 
@@ -84,6 +84,7 @@ class Home extends Component {
       spinner = <Spinner />
     }
 
+    // no search done yet
     let content = (
       <Fragment>
         <p>No heroes !</p>
@@ -91,21 +92,28 @@ class Home extends Component {
       </Fragment>
     )
 
-    if (this.state.heroes) {
-      content = (
-        <Fragment>
-          <Heroes heroes={this.state.heroes} />
-          {spinner}
-          <Button disabled={this.state.loading} clicked={this.onLoadMore}>
-            Load more
+    if (this.state.heroes && this.state.heroes.isArray()) {
+      // no results found
+      if (this.state.heroes.length <= 0) {
+        content = "This is not the hero you are looking for"
+      }
+      // results found
+      else {
+        content = (
+          <Fragment>
+            <Heroes heroes={this.state.heroes} />
+            {spinner}
+            <Button disabled={this.state.loading} clicked={this.onLoadMore}>
+              Load more
           </Button>
-        </Fragment>
-      )
+          </Fragment>
+        )
+      }
     }
 
     return (
       <Fragment>
-        <Search submitted={(terms) => this.onSearch(terms, true)} />
+        {/* <Search submitted={(terms) => this.onSearch(terms, true)} /> */}
         {content}
       </Fragment>
     )

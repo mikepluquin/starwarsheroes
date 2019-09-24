@@ -3,7 +3,7 @@ import { Switch, withRouter, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary'
-import Layout from './components/Layout/Layout'
+import DefaultLayout from './components/Layout/DefaultLayout/DefaultLayout'
 import Home from './containers/Home/Home'
 
 class App extends Component {
@@ -11,7 +11,7 @@ class App extends Component {
     return (
       <ErrorBoundary>
         <Switch>
-          <Layout darkMode={this.props.darkMode} exact path="/" component={Home} />
+          <DefaultLayout darkMode={this.props.darkMode} exact path="/" component={Home} />
           <Redirect to="/" />
         </Switch>
       </ErrorBoundary>
