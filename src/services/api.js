@@ -5,16 +5,10 @@ const config = create({
   timeout: 20000
 })
 
-export const login = (attributes) => {
-  return config
-    .post(
-      'auth/login',
-      {
-        email: attributes.email, password: attributes.password
-      }
-    )
+export const fetchPeople = (id) => {
+  return config.get('people/' + id)
 }
 
-export const fetchPeoples = () => {
-  return config.get('people')
+export const fetchPeoples = (params) => {
+  return config.get('peple', params)
 }
