@@ -11,10 +11,9 @@ import './assets/styles/starwars-glyphicons.css'
 import reducer from './store/reducer'
 import * as serviceWorker from './serviceWorker'
 
-// redux dev tools
-const composeEnhancers = (process.env.NODE_ENV === 'development' ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : null) || compose;
+const reduxDevTools = (process.env.NODE_ENV === 'development' ? window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() : null) || compose;
 
-const store = createStore(reducer, composeEnhancers)
+const store = createStore(reducer, reduxDevTools)
 
 const app = (
   <Provider store={store}>
