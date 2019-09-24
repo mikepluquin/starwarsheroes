@@ -1,12 +1,13 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
 import Header from '../../containers/Header/Header'
 import Footer from '../../components/Footer/Footer'
 
-const layout = ({ component: MatchComponent, ...remainingProps }) => {
+const layout = ({ darkMode, component: MatchComponent, ...remainingProps }) => {
   return (
-    <div id="layout">
+    <div id="layout" className={darkMode ? "dark-mode" : null}>
       <Header />
       <main>
         <Route
@@ -19,6 +20,10 @@ const layout = ({ component: MatchComponent, ...remainingProps }) => {
       <Footer />
     </div>
   )
+}
+
+layout.propTypes = {
+  darkMode: PropTypes.bool
 }
 
 export default layout

@@ -1,19 +1,27 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Switch, withRouter, Redirect } from 'react-router-dom'
+import { connect } from 'react-redux'
 
 import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary'
 import Layout from './components/Layout/Layout'
 import Home from './containers/Home/Home'
 
-const app = props => {
-  return (
-    <ErrorBoundary>
-      <Switch>
-        <Layout exact path="/" component={Home} />
-        <Redirect to="/" />
-      </Switch>
-    </ErrorBoundary>
-  )
+class App extends Component {
+  render() {
+    return (
+      <ErrorBoundary>
+        <Switch>
+          <Layout darkMode={this.props.darkMode} exact path="/" component={Home} />
+          <Redirect to="/" />
+        </Switch>
+      </ErrorBoundary>
+    )
+  }
+}
+const mapStateToProps = state => {
+  return {
+    darkMode: state.darkMode
+  }
 }
 
-export default withRouter(app)
+export default connect(mapStateToProps)(withRouter(App))

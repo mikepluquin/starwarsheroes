@@ -1,13 +1,13 @@
 import React, { memo } from 'react'
 import PropTypes from 'prop-types'
 
-import Icon from './Icon/Icon'
+import HeroIcon from './HeroIcon/HeroIcon'
 
 const hero = props => {
   return (
     <div>
       {props.name}
-      <Icon heroId={props.id} />
+      <HeroIcon heroId={props.id} />
     </div>
   )
 }
