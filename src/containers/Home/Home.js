@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from 'react'
+import { connect } from 'react-redux'
 
 import Heroes from '../../components/Heroes/Heroes'
+import Search from '../../components/Search/Search'
 import Button from '../../components/UI/Button/Button'
 import Spinner from '../../components/UI/Spinner/Spinner'
 import * as api from '../../services/api'
@@ -13,35 +15,67 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    const params = {
-      page: this.state.page
-    }
-    this.fetchPeoples(params)
+    this.fetchPeoples()
   }
 
-  fetchPeoples(params) {
+  fetchPeoples(params = {}, append = false) {
     this.setState({
       loading: true
     })
-    api.fetchPeoples(params)
-      .then((response) => {
-        this.setState({
-          heroes: response.data,
-          loading: false
-        })
-      }).catch((error) => {
-        alert(error)
-        this.setState({
-          loading: false
-        })
+
+    // prepare params
+    let newPage = 1
+    if (append) {
+      newPage = this.state.page + 1
+    }
+    params.page = newPage
+
+    if(this.props.wookieMode){
+      params.format = "wookiee"
+    }
+
+    api.fetchPeoples(params).then((response) => {
+      // format the result
+      const newHeroes = response.data.map(hero => {
+        // hero id is the last part of its url
+        // e.g. : url is "https://swapi.co/api/people/1/" , id will be 1
+        const parsedUrl = hero.url.split("/")
+        hero.id = parsedUrl[parsedUrl.length - 2]
+        return hero
       })
+
+      let updatedHeroes = []
+      // append to the current results
+      if (append) {
+        updatedHeroes = this.state.heroes.concat(newHeroes)
+      }
+      // replace the current results
+      else {
+        updatedHeroes = newHeroes
+      }
+      this.setState({
+        heroes: updatedHeroes,
+        loading: false,
+        page: newPage
+      })
+    }).catch((error) => {
+      alert(error)
+      this.setState({
+        loading: false,
+        page: newPage
+      })
+    })
   }
 
   onLoadMore() {
+    this.fetchPeoples()
+  }
+
+  onSearch(terms) {
     const params = {
-      page: this.state.page + 1
+      search: terms
     }
-    this.fetchPeoples(params)
+    this.fetchPeoples(params, true)
   }
 
   render() {
@@ -69,8 +103,19 @@ class Home extends Component {
       )
     }
 
-    return content
+    return (
+      <Fragment>
+        <Search submitted={(terms) => this.onSearch(terms, true)} />
+        {content}
+      </Fragment>
+    )
   }
 }
 
-export default Home
+const mapStateToProps = state => {
+  return {
+    wookieMode: state.wookieMode
+  }
+}
+
+export default connect(mapStateToProps)(Home)

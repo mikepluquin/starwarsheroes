@@ -1,18 +1,19 @@
 import React, { memo } from 'react'
 import PropTypes from 'prop-types'
 
-const icon = props => {
+const heroIcon = props => {
   const classesName = [
-    "swg"
+    "swg",
+    "swg-" + props.type
   ]
-  
+
   return (
     <i className={classesName.join(' ')}></i>
   )
 }
 
-icon.propTypes = {
+heroIcon.propTypes = {
   heroId: PropTypes.number.isRequired
 }
 
-export default memo(icon)
+export default memo(heroIcon)
