@@ -5,7 +5,7 @@ import { Provider } from 'react-redux'
 import { createStore, compose } from 'redux'
 
 import App from './App'
-import './assets/styles/app.sass'
+import './assets/styles/index.sass'
 import './assets/styles/starwars-glyphicons.css'
 
 import reducer from './store/reducer'
