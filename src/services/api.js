@@ -10,5 +10,5 @@ export const fetchPeople = (id) => {
 }
 
 export const fetchPeoples = (params) => {
-  return config.get('peple', params)
+  return config.get('people', params)
 }
