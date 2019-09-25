@@ -13,9 +13,9 @@ const hero = props => {
           {props.name}
         </h3>
       </div>
-      <div className="card-body">
+      {/* <div className="card-body">
         {props.birth_year}
-      </div>
+      </div> */}
     </div>
   )
 }
