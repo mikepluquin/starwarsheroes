@@ -2,7 +2,6 @@ import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 
 import Heroes from '../../components/Heroes/Heroes'
-import Search from '../../components/Search/Search'
 import Button from '../../components/UI/Button/Button'
 import Icon from '../../components/UI/Icon/Icon'
 import Spinner from '../../components/UI/Spinner/Spinner'
@@ -84,7 +83,7 @@ class Home extends Component {
     if (this.state.loading) {
       spinner = (
         <div>
-          <Spinner size="xxl" />
+          <Spinner size="xl" />
         </div>
       )
     }
@@ -128,17 +127,9 @@ class Home extends Component {
     }
 
     return (
-      <Fragment>
-        <div className="container">
-          <div className="row">
-            <div className="col-6 offset-3">
-              <Search changed={(terms) => this.onSearch(terms, true)} />
-            </div>
-          </div>
-
-          {content}
-        </div>
-      </Fragment>
+      <div className="container">
+        {content}
+      </div>
     )
   }
 }

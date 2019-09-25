@@ -2,8 +2,31 @@
   -webkit-animation: spinner linear 1s infinite
   animation: spinner linear 1s infinite
 
-.text-xxl
-  font-size: 80px !important
+.text-xl
+  font-size: 4rem !important
+
+.text-md
+  font-size: 1.7rem !important
 
 .text-yellow 
-  color: #efdf1e
+  color: $yellow
+
+.text-black 
+  color: $black
+
+.text-wookie
+  color: $wookie
+
+.stroke-yellow
+  @include stroke(1, $yellow)
+
+.stroke-white
+  @include stroke(1, $white)
+
+.dark-mode-toggle 
+  color: $blue
+
+.form-control 
+  border: none
+  &:focus
+    border: none

@@ -11,3 +11,9 @@ export const toggleWookieMode = () => {
     type: actionTypes.TOGGLE_WOOKIE_MODE
   }
 }
+
+export const updateSearchTerms = () => {
+  return {
+    type: actionTypes.UPDATE_SEARCH_TERMS
+  }
+}

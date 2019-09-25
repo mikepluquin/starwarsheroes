@@ -1,12 +1,12 @@
 @import 'variables'
+@import 'mixins'
 @import 'fonts'
 @import 'reset'
 @import 'keyframes'
 @import 'classes'
 
 body
-  font-family: 'starjedi', 'Trebuchet MS', 'Segoe UI', arial
-  text-transform: lowercase
+  font-family: 'distantgalaxy', 'Trebuchet MS', 'Segoe UI', arial
 
 #root
   min-height: 100%
@@ -15,6 +15,7 @@ body
   overflow: auto
   background-image: url('../images/light-bg.png')
   background-size: cover
+  transition: background-image 0.3s
   background-position: right
   height: 100vh
   display: flex 
@@ -22,10 +23,28 @@ body
   color: #000
   main
     flex: 1
+
   header 
     background: #ffffff75
-  &.layout_error
-    background-image: url('../images/error-bg.png')
-  &.layout_dark
+    z-index: 100
+    position: sticky
+    top: 0px
+  
+  &.layout-dark
     color: #fff
     background-image: url('../images/dark-bg.png')
+    header 
+      background: #00000075
+    
+    .form-control
+      background: lighten($black, 5%)
+      color: $white
+      &:focus 
+        background: lighten($black, 5%)
+        color: $white
+    
+    .dark-mode-toggle 
+      color: $red
+
+    .hero 
+      background-color: $black

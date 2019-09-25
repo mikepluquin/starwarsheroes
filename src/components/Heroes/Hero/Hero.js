@@ -5,13 +5,13 @@ import HeroIcon from './HeroIcon/HeroIcon'
 
 const hero = props => {
   return (
-    <div className="flex-grow-1 card border-0 m-2">
-      <div className="card-header border-0 bg-dark">
-        <h3 className="text-yellow">
+    <div className="hero flex-grow-1 card border-0 m-2">
+      <div className="card-header border-0">
+        <span className="h3 text-yellow">
           <HeroIcon heroId={props.id} />
           &nbsp;
           {props.name}
-        </h3>
+        </span>
       </div>
       {/* <div className="card-body">
         {props.birth_year}

@@ -7,8 +7,17 @@ const icon = props => {
     "swg-" + props.type
   ]
 
+  if (props.size) {
+    classesName.push('text-' + props.size)
+  }
+
+  if (props.color) {
+    classesName.push('text-' + props.color)
+  }
+
   return (
     <i
+      title={props.title}
       className={classesName.join(' ')}
       onClick={props.clicked}>
     </i>
@@ -17,7 +26,10 @@ const icon = props => {
 
 icon.propTypes = {
   type: PropTypes.string.isRequired,
-  clicked: PropTypes.func
+  clicked: PropTypes.func,
+  size: PropTypes.string,
+  color: PropTypes.string,
+  title: PropTypes.string
 }
 
 export default memo(icon)

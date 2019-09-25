@@ -1,8 +1,6 @@
 // https://fr.reactjs.org/docs/error-boundaries.html
 import React, { Component } from 'react'
 
-import ErrorLayout from '../Layout/ErrorLayout/ErrorLayout'
-
 class ErrorBoundary extends Component {
   state = {
     hasError: false
@@ -24,7 +22,15 @@ class ErrorBoundary extends Component {
     if (this.state.hasError) {
       // Vous pouvez afficher n'importe quelle UI de repli.
       return (
-        <ErrorLayout/>
+        <div id="layout" className="layout-error">
+          <main>
+            <div className="h-100 d-flex align-items-center justify-content-center">
+              <h1>
+                Oops, something went wrong !
+              </h1>
+            </div>
+          </main>
+        </div >
       )
     }
 

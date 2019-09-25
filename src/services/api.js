@@ -5,10 +5,6 @@ const config = create({
   timeout: 20000
 })
 
-export const fetchPeople = (id) => {
-  return config.get('people/' + id)
-}
-
 export const fetchPeoples = (params) => {
-  return config.get('people', params)
+  return config.get('people/', params)
 }
