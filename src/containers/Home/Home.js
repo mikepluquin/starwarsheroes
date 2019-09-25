@@ -81,7 +81,7 @@ class Home extends Component {
 
   render() {
     let spinner = null
-    if (!this.state.loading) {
+    if (this.state.loading) {
       spinner = (
         <div>
           <Spinner size="xxl" />
