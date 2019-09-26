@@ -14,7 +14,7 @@ class App extends Component {
         <div id="layout" className={this.props.darkMode ? "layout-dark" : null}>
           <Header />
          
-          <main>
+          <main className="mb-3 mt-3">
             <Switch>
               <Route exact path="/" component={Home} />
               <Redirect to="/" />

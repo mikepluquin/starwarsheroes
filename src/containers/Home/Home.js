@@ -82,7 +82,7 @@ class Home extends Component {
     let spinner = null
     if (this.state.loading) {
       spinner = (
-        <div>
+        <div className="text-center">
           <Spinner size="xl" />
         </div>
       )
@@ -113,8 +113,8 @@ class Home extends Component {
               </div>
             </div>
 
-            <div className="row">
-              <div className="col-6 offset-5">
+            <div className="row mt-2">
+              <div className="col-12 text-center">
                 {spinner}
                 <Button disabled={this.state.loading} clicked={() => this.onLoadMore()}>
                   Load more

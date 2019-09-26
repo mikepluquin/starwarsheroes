@@ -1,51 +1,10 @@
-@import 'variables'
-@import 'mixins'
-@import 'fonts'
-@import 'reset'
-@import 'keyframes'
-@import 'classes'
+@import variables
+@import mixins
+@import fonts
+@import reset
+@import keyframes
+@import classes
 
-body
-  font-family: 'distantgalaxy', 'Trebuchet MS', 'Segoe UI', arial
+@import app
+@import dark_side
 
-#root
-  min-height: 100%
-  
-#layout
-  overflow: auto
-  background-image: url('../images/light-bg.png')
-  background-size: cover
-  background-color: #cbb49d
-  transition: background-image 0.3s
-  background-position: right
-  height: 100vh
-  display: flex 
-  flex-direction: column
-  color: #000
-  main
-    flex: 1
-
-  header 
-    background: #ffffff75
-    z-index: 100
-    position: sticky
-    top: 0px
-  
-  &.layout-dark
-    color: #fff
-    background-image: url('../images/dark-bg.png')
-    header 
-      background: #00000075
-    
-    .form-control
-      background: lighten($black, 5%)
-      color: $white
-      &:focus 
-        background: lighten($black, 5%)
-        color: $white
-    
-    .dark-mode-toggle 
-      color: $red
-
-    .hero 
-      background-color: $black

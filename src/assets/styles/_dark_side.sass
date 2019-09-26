@@ -1,0 +1,33 @@
+#layout.layout-dark
+    color: $white
+    background-image: url('../images/dark-bg.png')
+
+    // ----------------------------
+
+    header 
+      background: $black
+      .dark-mode-toggle 
+        color: $red
+
+    // ----------------------------
+    
+    .form-control
+      background: lighten($black, 12%)
+      color: $white
+      &:focus 
+        background: lighten($black, 12%)
+        color: $white    
+  
+    // ----------------------------
+
+    .bg-side
+      background-color: $black
+    
+    .text-side 
+      color: $white
+
+    // ---------------------------- 
+
+    .spinner
+      &:before
+        content: "\f055"

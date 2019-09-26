@@ -1,2 +1,17 @@
 html, body
   height: 100%
+
+body 
+  font-family: 'distantgalaxy', 'Trebuchet MS', 'Segoe UI', arial
+
+a 
+  color: $yellow 
+  transition: 0.3s
+  &:hover 
+    text-decoration: none
+    color: darken($yellow, 5%)
+    transition: 0.3s
+
+@media (max-width: 576px)
+  html
+    font-size: 85%

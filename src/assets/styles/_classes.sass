@@ -1,12 +1,24 @@
-.spinner
-  -webkit-animation: spinner linear 1s infinite
-  animation: spinner linear 1s infinite
+// ------- BACKGROUND COLOR ---------- 
+
+.bg-black 
+  background-color: $black 
+
+// ----------------------------
+
+// ------- TEXT SIZE ---------- 
 
 .text-xl
-  font-size: 4rem !important
+  font-size: 6em !important
 
 .text-md
   font-size: 1.7rem !important
+
+.text-xs
+  font-size: 0.8rem !important
+
+// ----------------------------
+
+// ------- TEXT COLOR ---------- 
 
 .text-yellow 
   color: $yellow
@@ -17,16 +29,38 @@
 .text-wookie
   color: $wookie
 
+.text-side 
+  color: $black
+
+// ----------------------------
+
+// ------- TEXT STROKE ---------- 
+
 .stroke-yellow
   @include stroke(1, $yellow)
 
 .stroke-white
   @include stroke(1, $white)
 
-.dark-mode-toggle 
-  color: $blue
+// ---------- FORM -------------
 
 .form-control 
   border: none
+  box-shadow: none
   &:focus
     border: none
+    box-shadow: none
+
+
+// ----------------------------
+
+// ---------- MISC -------------
+
+.btn 
+  box-shadow: none !important
+
+.spinner
+  -webkit-animation: spinner linear 1s infinite
+  animation: spinner linear 1s infinite
+
+// ----------------------------
