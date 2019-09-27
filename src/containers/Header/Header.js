@@ -12,7 +12,7 @@ class Header extends Component {
 
   render() {
     return (
-      <header className="shadow">
+      <header className="shadow bg-side">
         <nav className="navbar navbar-expand justify-content-around">
           <span className="navbar-brand stroke-yellow text-black lh-1">
             Star
