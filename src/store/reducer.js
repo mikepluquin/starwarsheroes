@@ -1,7 +1,7 @@
 import * as actionTypes from './actionTypes'
 
 const initialState = {
-  darkMode: false,
+  darkMode: new Date().getHours() > 19,
   wookieMode: false
 }
 
