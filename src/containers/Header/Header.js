@@ -14,8 +14,10 @@ class Header extends Component {
     return (
       <header className="shadow">
         <nav className="navbar navbar-expand justify-content-around">
-          <span className="navbar-brand stroke-yellow text-black">
-            Heroes
+          <span className="navbar-brand stroke-yellow text-black lh-1">
+            Star
+            <br/>
+            Wars
           </span>
 
           <ul className="navbar-nav">
@@ -25,11 +27,11 @@ class Header extends Component {
           </ul>
 
           <ul className="navbar-nav align-items-center">
-            <li className="nav-item stroke-white mr-2 text-wookie">
-              <Icon title="Wookie translation" size="md" type="wookie" clicked={this.props.onToggleWookie} />
+            <li className={"nav-item stroke-white mr-2 wookie-mode-toggle text-wookie" + (!this.props.wookieMode ? " semi-transparent" : "")}>
+              <Icon title="Wookie translation" size="lg" type="wookie" clicked={this.props.onToggleWookie} />
             </li>
             <li className="nav-item stroke-white dark-mode-toggle">
-              <Icon title={this.props.darkMode ? "Light side" : "Dark side"} size="md" type="lightsabers" clicked={this.props.onToggleDarkMode} />
+              <Icon title={this.props.darkMode ? "Light side" : "Dark side"} size="lg" type="lightsabers" clicked={this.props.onToggleDarkMode} />
             </li>
           </ul>
         </nav>

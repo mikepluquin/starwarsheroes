@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 
 const spinner = props => {
   const classesName = [
-    "spinner"
+    "anim-spinner"
   ]
 
   if (props.size) {

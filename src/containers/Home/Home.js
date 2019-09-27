@@ -82,7 +82,7 @@ class Home extends Component {
     let spinner = null
     if (this.state.loading) {
       spinner = (
-        <div className="text-center">
+        <div className="text-center mb-3 mt-2">
           <Spinner size="xl" />
         </div>
       )
@@ -95,13 +95,13 @@ class Home extends Component {
       // no results found
       if (this.state.heroes.length <= 0) {
         content = (
-          <p>
-            <Icon type="trooper" />
-            &nbsp;
-            This is not the hero you are looking for
-          </p>
+          <div className="d-flex align-items-center justify-content-center text-md">
+            <Icon type="stormtrooper" size="lg" />
+            <span className="ml-3">
+              This is not the hero you are looking for
+            </span>
+          </div>
         )
-
       }
       // results found
       else {
@@ -113,7 +113,7 @@ class Home extends Component {
               </div>
             </div>
 
-            <div className="row mt-2">
+            <div className="row mt-2 mb-2">
               <div className="col-12 text-center">
                 {spinner}
                 <Button disabled={this.state.loading} clicked={() => this.onLoadMore()}>

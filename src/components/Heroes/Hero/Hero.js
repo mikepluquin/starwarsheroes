@@ -5,11 +5,10 @@ import HeroIcon from './HeroIcon/HeroIcon'
 
 const hero = props => {
   return (
-    <div className="bg-side shadow flex-grow-1 card border-0 m-2">
+    <div className="bg-side shadow card border-0">
       <div className="card-header border-0">
         <span className="h3 text-yellow">
           <HeroIcon heroId={props.id} />
-          &nbsp;
           {props.name}
         </span>
       </div>

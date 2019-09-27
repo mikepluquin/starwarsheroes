@@ -5,14 +5,14 @@ import Hero from './Hero/Hero'
 
 const heroes = props => {
   return (
-    <div className="d-flex flex-wrap">
+    <div className="d-flex flex-column">
       {
         props.heroes.map(hero => (
-          <Hero
-            {...hero}
-            key={hero.id}
-            id={hero.id}
-          />
+          <div key={hero.url} className="hero-container ml-auto mr-auto mb-2 mt-2 flex-grow-1 anim-opacity">
+            <Hero
+              {...hero}
+            />
+          </div>
         ))
       }
     </div>
