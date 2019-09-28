@@ -13,6 +13,8 @@ const button = props => {
     classesName.push('btn-' + props.color)
   }
 
+  classesName.push(...props.classesName)
+  
   return (
     <button
       className={classesName.join(' ')}
@@ -29,7 +31,8 @@ button.propTypes = {
   size: PropTypes.string,
   color: PropTypes.string,
   disabled: PropTypes.bool,
-  clicked: PropTypes.func
+  clicked: PropTypes.func,
+  classesName: PropTypes.array
 }
 
 button.defaultProps = {

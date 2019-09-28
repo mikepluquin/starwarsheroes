@@ -116,7 +116,10 @@ class Home extends Component {
             <div className="row mt-2 mb-2">
               <div className="col-12 text-center">
                 {spinner}
-                <Button disabled={this.state.loading} clicked={() => this.onLoadMore()}>
+                <Button 
+                classesName={["btn-xs-block"]}
+                disabled={this.state.loading} 
+                clicked={() => this.onLoadMore()}>
                   Load more
                 </Button>
               </div>
