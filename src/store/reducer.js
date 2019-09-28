@@ -1,7 +1,9 @@
 import * as actionTypes from './actionTypes'
 
+const currentHour = new Date().getHours()
+
 const initialState = {
-  darkMode: new Date().getHours() > 19,
+  darkMode: currentHour <= 9 || currentHour >= 20,
   wookieMode: false
 }
 
