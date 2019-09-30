@@ -10,8 +10,11 @@
 
 // ------- TEXT SIZE ---------- 
 
+.text-xxl
+  font-size: 6.5rem !important
+
 .text-xl
-  font-size: 6rem !important
+  font-size: 4rem !important
 
 .text-lg
   font-size: 2.5rem !important
@@ -29,9 +32,6 @@
 .text-black 
   color: $black
 
-.text-wookie
-  color: $wookie
-
 .text-side 
   color: $black
 
@@ -48,13 +48,14 @@
 // ---------- FORM -------------
 
 .form-control 
+  border-radius: 30px
   background-color: darken($white, 15%)
   border: none
   box-shadow: none
   &:focus
+    background-color: darken($white, 15%)
     border: none
     box-shadow: none
-
 
 // ----------------------------
 
@@ -64,9 +65,6 @@
   max-width: 100%
   width: 500px 
 
-.semi-transparent 
-  opacity: 0.5
-  
 .lh-1
   line-height: 1rem
 

@@ -5,7 +5,8 @@ const footer = props => {
     <footer className="pr-5 pl-5 pt-2 pb-2 bg-black text-light">
       <div className="text-center text-xs d-flex flex-column">
         <div>
-          Made by&nbsp;
+          {new Date().getFullYear()}&nbsp;ABY&nbsp;- 
+          &nbsp;Made by&nbsp;
             <a href="https://mikepluquin.dev">
             Mike
             </a>

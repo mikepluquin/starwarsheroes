@@ -3,7 +3,7 @@ import { Switch, withRouter, Redirect, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary'
-import Header from './containers/Header/Header'
+import Header from './components/Header/Header'
 import Footer from './components/Footer/Footer'
 import Home from './containers/Home/Home'
 

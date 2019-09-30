@@ -2,18 +2,25 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
-import { createStore, compose } from 'redux'
+import { createStore, applyMiddleware, compose } from 'redux'
+import createSagaMiddleware from 'redux-saga'
 
 import App from './App'
 import './assets/styles/index.sass'
 import './assets/styles/starwars-glyphicons.css'
 
 import reducer from './store/reducer'
+import { watcher } from './store/saga'
+
 import * as serviceWorker from './serviceWorker'
 
-const reduxDevTools = (process.env.NODE_ENV === 'development' ? window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() : null) || compose;
+// redux dev tools
+const composeEnhancers = (process.env.NODE_ENV === 'development' ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : null) || compose;
 
-const store = createStore(reducer, reduxDevTools)
+const sagaMiddleware = createSagaMiddleware()
+const store = createStore(reducer, composeEnhancers(applyMiddleware(sagaMiddleware)))
+
+sagaMiddleware.run(watcher)
 
 const app = (
   <Provider store={store}>

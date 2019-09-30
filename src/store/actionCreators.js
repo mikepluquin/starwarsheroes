@@ -6,14 +6,36 @@ export const toggleDarkMode = () => {
   }
 }
 
-export const toggleWookieMode = () => {
+export const fetchHeroesInit = params => {
   return {
-    type: actionTypes.TOGGLE_WOOKIE_MODE
+    type: actionTypes.FETCH_HEROES_INIT,
+    params: params
   }
 }
 
-export const updateSearchTerms = () => {
+export const fetchHeroesSuccess = heroes => {
   return {
-    type: actionTypes.UPDATE_SEARCH_TERMS
+    type: actionTypes.FETCH_HEROES_SUCCESS,
+    heroes: heroes
+  }
+}
+
+export const fetchHeroesFail = () => {
+  return {
+    type: actionTypes.FETCH_HEROES_FAIL
+  }
+}
+
+export const setParams = params => {
+  return {
+    type: actionTypes.UPDATE_PARAMS,
+    params: params
+  }
+}
+
+export const setNbResults = nbResults => {
+  return{
+    type: actionTypes.SET_NB_RESULTS,
+    nbResults: nbResults
   }
 }
