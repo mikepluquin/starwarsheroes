@@ -15,11 +15,12 @@ const hero = props => {
   return (
     <div className="bg-side shadow card border-0">
       <div className="card-header border-0">
-        <span className="h3 text-yellow d-flex align-items-center">
+        <div className="h3 mb-0 text-yellow d-flex align-items-center">
           <HeroIcon heroId={heroId} />
-          &nbsp;
-          {props.name}
-        </span>
+          <span className="ml-2">
+            {props.name}
+          </span>
+        </div>
       </div>
     </div>
   )

@@ -86,7 +86,7 @@ class Home extends Component {
                     // show load more button only if results are remaining
                     this.props.heroes.length < this.props.nbResults
                     && <Button
-                      classesName={["btn-xs-block"]}
+                      classesName={["btn-xs-block shadow"]}
                       disabled={this.props.loading}
                       clicked={() => this.onLoadMore()}>
                       Load more
