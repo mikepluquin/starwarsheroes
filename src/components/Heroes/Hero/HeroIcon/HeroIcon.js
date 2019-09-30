@@ -1,14 +1,21 @@
 import React, { memo } from 'react'
 import PropTypes from 'prop-types'
 
+import Icon from '../../../UI/Icon/Icon'
+
 const heroIcon = props => {
-  const classesName = [
-    "swg",
-    "swg-" + props.type
-  ]
+  let type = null 
+  switch(props.heroId){
+    case 1: type = 'lukeskywalker'; break
+    case 2: type = 'r2d2-2'; break
+    case 3: type = 'c3po-2'; break
+    case 4: type = 'darthvader-4'; break
+    case 5: type = 'leia-2'; break
+    default: type = 'stormtrooper-2'
+  }
 
   return (
-    <i className={classesName.join(' ')}></i>
+    <Icon size="xl" color="side" type={type} />
   )
 }
 

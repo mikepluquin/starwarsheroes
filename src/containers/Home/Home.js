@@ -40,13 +40,13 @@ class Home extends Component {
     if (this.props.error) {
       content = (
         <Fragment>
+          {spinner}
           <div className="d-flex align-items-center justify-content-center text-md">
             <Icon type="stormtrooper" size="lg" />
             <span className="ml-3">
               Oops, something went wrong !
             </span>
           </div>
-          {spinner}
         </Fragment>
       )
     }
@@ -58,13 +58,13 @@ class Home extends Component {
         if (this.props.nbResults === 0) {
           content = (
             <Fragment>
+              {spinner}
               <div className="d-flex align-items-center justify-content-center text-md">
                 <Icon type="stormtrooper" size="lg" />
                 <span className="ml-3">
                   This is not the hero you are looking for
                 </span>
               </div>
-              {spinner}
             </Fragment>
           )
         }
