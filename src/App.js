@@ -3,8 +3,8 @@ import { Switch, withRouter, Redirect, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary'
-import Header from './components/Header/Header'
 import Footer from './components/Footer/Footer'
+import Header from './containers/Header/Header'
 import Home from './containers/Home/Home'
 
 class App extends Component {

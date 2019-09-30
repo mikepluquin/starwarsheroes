@@ -1,19 +1,29 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import Search from '../Search/Search'
-import Icon from '../UI/Icon/Icon'
+import Search from '../../components/Search/Search'
+import Icon from '../../components/UI/Icon/Icon'
 import * as actionCreators from '../../store/actionCreators'
 
 class Header extends Component {
+  state = {
+    searchTimeout: 0
+  }
+
   handleSearchTermsChange = (terms) => {
     const updatedParams = {
       ...this.props.params,
       search: terms,
       page: 1
     }
+    
     this.props.onSetParams(updatedParams)
-    this.props.onFetchHeroes(updatedParams)
+    clearTimeout(this.state.searchTimeout)
+    this.setState({
+      searchTimeout: setTimeout(() => {
+        this.props.onFetchHeroes(updatedParams)
+      }, 500)
+    })
   }
 
   render() {
